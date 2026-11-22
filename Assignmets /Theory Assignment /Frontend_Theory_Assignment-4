@@ -1,1 +1,112 @@
+Frontend Theory Assignment-4
+
+Ans1. A closure is a function that remembers the variables of its outer function, even after the outer function has finished running.
+
+function outer() {
+  let count = 0;
+  function inner() {
+    count++;
+    console.log(count);
+  }
+  return inner;
+}
+
+const counter = outer();
+counter(); // 1
+counter(); // 2
+
+Here, inner still remembers count even after outer is finished.
+
+Ans2. A Promise is an object that represents the result of an asynchronous task, which can finish now or later. It has three states:
+1. Pending - the task is still running, with no result yet.
+2. Fulfilled - the task finished successfully.
+3. Rejected - the task failed with an error.
+
+let p = new Promise((resolve, reject) => {
+  resolve("Done");
+});
+p.then(res => console.log(res)).catch(err => console.log(err));
+
+Ans3. async/await is a way to write asynchronous code that looks like normal code. An async function always returns a Promise, and await pauses the function until the Promise gives its result.
+
+It makes working with Promises easier because:
+- We do not need to write long .then() chains.
+- The code is easier to read and understand.
+- Errors can be handled with simple try...catch.
+
+async function getData() {
+  try {
+    let res = await fetch("https://api.example.com/data");
+    let data = await res.json();
+    console.log(data);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+Ans4. The Global Execution Context is the first and default environment created when JavaScript code starts running. All code that is not inside any function runs here. It does two things:
+1. Creates the global object (window in the browser).
+2. Creates the this keyword, which points to the global object.
+
+There is only one Global Execution Context in a program. It is created in two phases: the memory creation phase and the code execution phase.
+
+Ans5. Currying is a technique in which a function with many arguments is changed into a series of functions that each take one argument.
+
+// Normal function
+function add(a, b) {
+  return a + b;
+}
+
+// Curried function
+function addCurry(a) {
+  return function (b) {
+    return a + b;
+  };
+}
+
+console.log(addCurry(2)(3)); // 5
+
+Ans6. jQuery is a small and fast JavaScript library. It makes tasks like DOM selection, event handling, animations and AJAX much easier, with less code ("write less, do more").
+
+Its significance in web development:
+- It makes JavaScript code short and simple.
+- It works the same in all browsers (cross-browser support).
+- It makes DOM changes, effects and animations easy.
+- It makes AJAX calls simple.
+
+$("#btn").click(function () {
+  $("p").hide();
+});
+
+Ans7. A component in React is a small, reusable piece of the user interface. A web page is made by joining many components together. Its types are:
+1. Functional Component - a simple JavaScript function that returns JSX. It uses hooks like useState to manage state.
+2. Class Component - a class that extends React.Component and uses a render() method to return JSX.
+
+function Hello() {
+  return <h1>Hello World</h1>;
+}
+
+Ans8. The Virtual DOM is a light copy of the real DOM that is kept in memory by React.
+
+How it improves performance:
+1. When something changes, React first updates the Virtual DOM.
+2. It compares the new Virtual DOM with the old one (this is called diffing).
+3. It finds only the parts that changed.
+4. It updates only those parts in the real DOM.
+
+Updating the real DOM is slow, so updating only the changed parts makes the application fast.
+
+Ans9. JSX stands for JavaScript XML. It lets us write HTML-like code inside JavaScript.
+
+const element = <h1>Hello</h1>;
+
+Browsers cannot understand JSX directly because it is not valid JavaScript. Browsers only understand normal JavaScript. So, JSX must first be converted into normal JavaScript using a tool like Babel.
+
+Ans10. Props (short for properties) are the way to pass data from a parent component to a child component. They are written like HTML attributes.
+
+function Welcome(props) {
+  return <h1>Hello {props.name}</h1>;
+}
+
+<Welcome name="Ritik" />
 
